@@ -1,17 +1,36 @@
 .card {
     
-        border-radius: 15px;
-        border: 2px solid rgb(255, 25, 0);
-        padding: 15px;
-        width: 40px;
-        height: 100px;
-       
+    
+        width:40px;
+        height:60px;
+        border:1px solid #c3e2f2;
+        float:left;
+        margin-right:5px;
+        margin-bottom:5px;
+        border-radius:2px;
+        font-family:courier;
+        cursor:pointer;
+        color: white;
+
+    
       
 }
 
-#collection {
-    display: block;
+h1 {
     text-align: center;
+    font-size: 35px;
+    font-family: 'Red Rose', cursive;
+    color: white;
+}
+
+#collection {
+
+    text-align: center;
+    padding: 25px;
   
    
+}
+
+body {
+    background-color: rgb(75, 103, 70);
 }
