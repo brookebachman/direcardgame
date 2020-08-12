@@ -1,0 +1,17 @@
+.card {
+    
+        border-radius: 15px;
+        border: 2px solid rgb(255, 25, 0);
+        padding: 15px;
+        width: 40px;
+        height: 100px;
+       
+      
+}
+
+#collection {
+    display: block;
+    text-align: center;
+  
+   
+}
