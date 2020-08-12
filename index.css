@@ -1,46 +1,46 @@
 .card {
-    
-    
-        width:75px;
-        height:115px;
-        border:1px solid #c3e2f2;
-        float:left;
-        margin-right:5px;
-        margin-bottom:5px;
-        border-radius:2px;
-        font-family:courier;
-        cursor:pointer;
-        color: white;
-
-    
-      
+	width: 75px;
+	height: 115px;
+	border: 1px solid #c3e2f2;
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	border-radius: 2px;
+	font-family: courier;
+	cursor: pointer;
+    color: white;
+    background-color: rgb(7, 70, 164);
 }
 
 h1 {
-    text-align: center;
-    font-size: 35px;
-    font-family: 'Crimson Text', serif;
-    color: white;
+	text-align: center;
+	font-size: 35px;
+	font-family: 'Crimson Text', serif;
+	color: white;
 }
 
 #collection {
-    text-align: center;
-    padding: 25px;
+	text-align: center;
+	padding: 25px;
 }
 
 body {
-    background-color: rgb(75, 103, 70);
-    padding: 20px;
+	background: url('https://animal-wallpaper.com/wallpaper/poker-table-background-hd-wallpaper-For-Background-HD-Wallpaper.jpg')
+		no-repeat center center fixed;
+	padding: 20px;
 }
-
+#background {
+    border-radius: 10px;
+    background-color: rgba(193, 10, 10, 0.577);
+}
 .text {
-    font-family: 'Crimson Text', serif;
-    color: #c3e2f2;
-    font-size: 25px;
-
+	font-family: 'Crimson Text', serif;
+	color: white;
+	font-size: 25px;
 }
 
 #topic {
-    display: flex;
-    justify-content: space-evenly ;
+    border-radius: 10px;
+    background-color: rgba(6, 104, 42, 0.577);
+    text-align: center;
 }

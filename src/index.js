@@ -21,18 +21,33 @@ function numPlayers(myDeck){
 	 console.log(p2Cards)
 	 let allHands = []
 	 allHands.push(p1Cards,p2Cards)
+	 for (let i = 0; i < allHands.length; i++){
+		 picturesOfHands(allHands[i])
+	 }
 	 
-	 picturesOfHands(p1Cards)
+	 
 	winner(allHands)
 
 }
 
 function winner(allHands){
+	let winner = 0
+	let current = 0;
 	//now need to iterate over the hands and find the total of the value
-	//compare the values for the hands/
+	//I keep a current value and if the number I am iterating over 
+	//compare the values for the hands
+	//Math.max chooses the larger number of the 2 you give it
 	//return the winners
-	console.log(allHands)
-	totalValues(allHands[0])
+	for (let i = 0; i < allHands.length; i++){
+		if (totalValues(allHands[i]) > totalValues(allHands[i + 1])){
+			current = totalValues(allHands[i])
+		} else {
+			 winner = Math.max(current, winner)
+		}
+	}
+	
+	console.log(Math.max(current, winner))
+	
 }
 
 function totalValues(hand){
@@ -78,27 +93,7 @@ function deck(){
 }
 
 let myDeck = deck()
-// picturesOfCards()
 
-// function picturesOfCards() {
-
-// 	for(var i=0; i < myDeck.length; i++){
-//         let card = document.createElement('div');
-//         let collection = document.getElementById("collection")
-        
-// 		card.className = 'card';
-
-// 		if(myDeck[i].suit == 'Diamonds'){
-// 			var ascii_char = '♦';
-// 		} else {
-// 			var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-// 		}
-
-// 		card.innerHTML = '' + myDeck[i].name + '' + ascii_char + '';
-        
-//         collection.appendChild(card)
-// 	}
-// }
 
 function shuffle(o) {
 	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -107,7 +102,7 @@ function shuffle(o) {
 };
 
 
-function playerHand(){
+function sortHand(){
 	// a player can have 5 cards
 	//The Player should have a Hand that can hold 5 Cards from the Deck.
 // The Player's Hand should be sorted by suit and then by point value
@@ -120,27 +115,31 @@ function playerHand(){
 
 function picturesOfHands(p1Cards) {
 	//here I want to add text so the player knows it is their hand, I need to do it outside of the for loop because that will address every card
-	let yourHand = document.createElement('h2')
-	yourHand.innerHTML = "Your Hand"
-	let hand = document.getElementById("hand")
-	hand.className = "text"
-	hand.appendChild(yourHand)
 
-	for(var i=0; i < p1Cards.length; i++){
-        let card = document.createElement('div');
+
+		let yourHand = document.createElement('h2')
+		yourHand.innerHTML = "Your Hand"
+		let hand = document.getElementById("hand")
+		hand.className = "text"
+		hand.appendChild(yourHand)
+
+		for(var i=0; i < p1Cards.length; i++){
+			let card = document.createElement('div');
+			
+			card.className = 'card';
+
+			if(p1Cards[i].suit == 'Diamonds'){
+				var ascii_char = '♦';
+			} else {
+				var ascii_char = '&' + p1Cards[i].suit.toLowerCase() + ';';
+			}
+
+			card.innerHTML = '' + p1Cards[i].name + '' + ascii_char + '';
 		
-		card.className = 'card';
-
-		if(p1Cards[i].suit == 'Diamonds'){
-			var ascii_char = '♦';
-		} else {
-			var ascii_char = '&' + p1Cards[i].suit.toLowerCase() + ';';
+			hand.appendChild(card)
 		}
-
-		card.innerHTML = '' + p1Cards[i].name + '' + ascii_char + '';
-       
-        hand.appendChild(card)
-	}
+	
+	
 }
 
 function drawACard(){
