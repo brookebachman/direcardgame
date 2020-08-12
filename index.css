@@ -1,8 +1,8 @@
 .card {
     
     
-        width:40px;
-        height:60px;
+        width:75px;
+        height:115px;
         border:1px solid #c3e2f2;
         float:left;
         margin-right:5px;
@@ -19,18 +19,28 @@
 h1 {
     text-align: center;
     font-size: 35px;
-    font-family: 'Red Rose', cursive;
+    font-family: 'Crimson Text', serif;
     color: white;
 }
 
 #collection {
-
     text-align: center;
     padding: 25px;
-  
-   
 }
 
 body {
     background-color: rgb(75, 103, 70);
+    padding: 20px;
+}
+
+.text {
+    font-family: 'Crimson Text', serif;
+    color: #c3e2f2;
+    font-size: 25px;
+
+}
+
+#topic {
+    display: flex;
+    justify-content: space-evenly ;
 }

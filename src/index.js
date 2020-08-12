@@ -22,6 +22,7 @@ function numPlayers(myDeck){
 	 let allHands = []
 	 allHands.push(p1Cards,p2Cards)
 	 
+	 picturesOfHands(p1Cards)
 	winner(allHands)
 
 }
@@ -77,27 +78,27 @@ function deck(){
 }
 
 let myDeck = deck()
-picturesOfCards()
+// picturesOfCards()
 
-function picturesOfCards() {
+// function picturesOfCards() {
 
-	for(var i=0; i < myDeck.length; i++){
-        let card = document.createElement('div');
-        let collection = document.getElementById("collection")
+// 	for(var i=0; i < myDeck.length; i++){
+//         let card = document.createElement('div');
+//         let collection = document.getElementById("collection")
         
-		card.className = 'card';
+// 		card.className = 'card';
 
-		if(myDeck[i].suit == 'Diamonds'){
-			var ascii_char = '♦';
-		} else {
-			var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
-		}
+// 		if(myDeck[i].suit == 'Diamonds'){
+// 			var ascii_char = '♦';
+// 		} else {
+// 			var ascii_char = '&' + myDeck[i].suit.toLowerCase() + ';';
+// 		}
 
-		card.innerHTML = '' + myDeck[i].name + '' + ascii_char + '';
+// 		card.innerHTML = '' + myDeck[i].name + '' + ascii_char + '';
         
-        collection.appendChild(card)
-	}
-}
+//         collection.appendChild(card)
+// 	}
+// }
 
 function shuffle(o) {
 	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -114,6 +115,32 @@ function playerHand(){
 	let suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 
 
+}
+
+
+function picturesOfHands(p1Cards) {
+	//here I want to add text so the player knows it is their hand, I need to do it outside of the for loop because that will address every card
+	let yourHand = document.createElement('h2')
+	yourHand.innerHTML = "Your Hand"
+	let hand = document.getElementById("hand")
+	hand.className = "text"
+	hand.appendChild(yourHand)
+
+	for(var i=0; i < p1Cards.length; i++){
+        let card = document.createElement('div');
+		
+		card.className = 'card';
+
+		if(p1Cards[i].suit == 'Diamonds'){
+			var ascii_char = '♦';
+		} else {
+			var ascii_char = '&' + p1Cards[i].suit.toLowerCase() + ';';
+		}
+
+		card.innerHTML = '' + p1Cards[i].name + '' + ascii_char + '';
+       
+        hand.appendChild(card)
+	}
 }
 
 function drawACard(){
