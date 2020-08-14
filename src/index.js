@@ -4,6 +4,13 @@ playerButton.addEventListener('click', function (event) {
 	numPlayers(myDeck);
 });
 
+const suits = {     
+	HEARTS: 1,
+	DIAMONDS : 2,
+	CLUBS: 3,
+	SPADES: 4
+}
+
 function numPlayers(myDeck) {
 	//while loop while arrays are < 5
 	//loop over the cards array
@@ -28,6 +35,7 @@ function numPlayers(myDeck) {
 	// 	 picturesOfHands(allHands[i])
 	// 	 sortHand(allHands[i], oldI, newI)
 	//  }
+
 	winner(allHands);
 }
 
@@ -79,7 +87,7 @@ function card(value, name, suit) {
 
 function deck() {
 	this.names = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-	this.suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
+	this.suits = [suits.HEARTS, suits.DIAMONDS, suits.CLUBS, suits.SPADES];
 	this.values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 15];
 	var cards = [];
 
@@ -108,29 +116,19 @@ function sortHand(hand) {
 	function compareCards(card1, card2) {
 		let suit1 = card1.suit;
 		let suit2 = card2.suit;
-		if (suit1 === 'Hearts') {
-			switch (suit2) {
-				case 'Hearts':
-					return 0;
-					break;
-				case 'Diamonds':
-					return -1;
-					break;
-				case 'Clubs':
-					return -1;
-					break;
-				case 'Spades':
-					return -1;
-					break;
-				default:
-					break;
-			}
+		let val1 = card1.value
+		let val2 = card2.value
+	
+		if (suit1 === suit2){
+			return val1 - val2
+		} else {
+			return suit1 - suit2
 		}
 	}
 	hand.sort(compareCards);
 
-	let suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
-	let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15];
+	// let suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
+	// let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15];
 	// 	let cardA = [];
 	// 	for (let i = 0; i < p1Cards.length; i++){
 	// 		for (const [key, value] of Object.entries(p1Cards[i])) {
@@ -144,7 +142,7 @@ function sortHand(hand) {
 
 	// 	}
 
-	console.log(hand);
+	
 }
 
 function picturesOfHands(hand) {
@@ -161,10 +159,10 @@ function picturesOfHands(hand) {
 
 		card.className = 'card';
 
-		if (hand[i].suit == 'Diamonds') {
+		if (hand[i].suit == 2) {
 			var ascii_char = '♦';
 		} else {
-			var ascii_char = '&' + hand[i].suit.toLowerCase() + ';';
+			var ascii_char = '&' + hand[i].suit + ';';
 		}
 
 		card.innerHTML = '' + hand[i].name + '' + ascii_char + '';
