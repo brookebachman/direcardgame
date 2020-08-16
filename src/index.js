@@ -28,6 +28,8 @@ function numPlayers(myDeck) {
 		console.log("chose random")
 	
  playerNum = Math.floor(Math.random() * 6) + 2; }
+ let numPlayers = document.getElementById("num-players")
+ numPlayers.innerHTML = `There are ${playerNum} players  |`
 	//console.log(playerNum, 'playernum');
 	for (let i = 1; i <= playerNum; i++) {
 		let hand = [];
@@ -50,7 +52,7 @@ function numPlayers(myDeck) {
 
 
 function winner(allHands) {
-	console.log("winner is being called")
+	let winnerh2 = document.getElementById("winner")
 	let winner = 0;
 	let winnerName = ""
 
@@ -69,8 +71,8 @@ function winner(allHands) {
 
 
 	}
-
-console.log(winner, "winner value", winnerName)
+	winnerh2.innerHTML = `Congratulations ${winnerName} won with ${winner} points!    `
+	console.log(winner, "winner value", winnerName)
 	//return 
 }
 

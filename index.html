@@ -7,17 +7,20 @@
   <body>
 
     <div id="background">
-      <h1 id="header">Dire Poker</h1>
+      <h1 id="header">Dire Wolf Cards</h1>
     </div>
       <div id="topic">
         <!-- <h2 class="text">Shuffle Me</h2>
         <h2 class="text">Draw A Hand</h2> -->
-        <h2 class="text" id="add-player">New Game</h2>
-        <h2 class="text" id="add-card">Draw A Card</h2>
+  
         <form id="number-form">
-          <label for="number">How Many Players:</label><br>
-          <input type="text" id="number" name="number"><br>
-          
+          <span><label class="text" for="number"> Enter in the number of players: </label></span> 
+         <span class="text"><input type="text" id="number" name="number">  or Play with a random number of players  </span>
+         <span class="text" id="add-player"> ❯ Click to Start Game </span>
+         <div>
+          <span class="big1" id="num-players"></span>
+          <span class="big2" id ="winner" ></span>
+        </div>
         </form>
       </div>
       <div id="collection"></div>
