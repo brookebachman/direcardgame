@@ -25,9 +25,10 @@ h1 {
 }
 
 body {
-	background: url('https://animal-wallpaper.com/wallpaper/poker-table-background-hd-wallpaper-For-Background-HD-Wallpaper.jpg')
-		no-repeat center center fixed;
-	padding: 20px;
+
+	background: url('public/dealer.jpg')
+	
+
 }
 #background {
     border-radius: 10px;
