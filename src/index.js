@@ -5,6 +5,7 @@ playerButton.addEventListener('click', function (event) {
 });
 
 const suits = {     
+	//I gave each suit a value to assist me in sorting the cards later
 	HEARTS: 1,
 	DIAMONDS : 2,
 	CLUBS: 3,
@@ -12,29 +13,27 @@ const suits = {
 }
 
 function numPlayers(myDeck) {
-	//while loop while arrays are < 5
-	//loop over the cards array
-	console.log(myDeck);
+	//while loop while arrays are < 5 because we only want 5 cards per hand
+	//loop over the cards array to load the cards
+	//console.log(myDeck);
 	let allHands = {};
 	let playerNum = Math.floor(Math.random() * 6) + 2;
-	console.log(playerNum, 'playernum');
+	//console.log(playerNum, 'playernum');
 	for (let i = 1; i <= playerNum; i++) {
 		let hand = [];
 
 		for (let i = 0; i < 5; i++) {
 			hand.push(myDeck.shift());
+	
 			sortHand(hand);
-			picturesOfHands(hand);
+			
 		}
-		allHands['player' + i] = hand;
+		picturesOfHands(allHands);
+		allHands['Player ' + i] = hand;
 	}
 	console.log(allHands, 'all hands');
 
-	//  allHands.push(p1Cards,p2Cards)
-	//  for (let i = 0; i < allHands.length; i++){
-	// 	 picturesOfHands(allHands[i])
-	// 	 sortHand(allHands[i], oldI, newI)
-	//  }
+			//using .shift takes away the item in an array and allows me to take cards out of the remaining deck so that each card is unique and there are no repeats
 
 	winner(allHands);
 }
@@ -55,7 +54,7 @@ function winner(allHands) {
 		}
 	}
 
-	console.log(Math.max(current, winner));
+	//console.log(Math.max(current, winner));
 }
 
 function totalValues(hand) {
@@ -113,6 +112,8 @@ function sortHand(hand) {
 	// The Player's Hand should be sorted by suit and then by point value
 	// The Player's Hand should be able to be totaled by point value.
 	// console.log(p1Cards, "cards for sort hand")
+
+	
 	function compareCards(card1, card2) {
 		let suit1 = card1.suit;
 		let suit2 = card2.suit;
@@ -124,35 +125,28 @@ function sortHand(hand) {
 		} else {
 			return suit1 - suit2
 		}
-	}
+		//here I am first sorting by suit, if the suit is the same we want to sort by value
 	hand.sort(compareCards);
 
-	// let suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades'];
-	// let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15];
-	// 	let cardA = [];
-	// 	for (let i = 0; i < p1Cards.length; i++){
-	// 		for (const [key, value] of Object.entries(p1Cards[i])) {
-	// 			cardA.push(key)
-	// 			for (let j = 0; j < cardA.length; j++){
-	// 				for (let c = 0; c < suits.length; c++){
-	// 					if (cardA[i] )
-	// 				}
-	// 			}
-	// 		  }
-
-	// 	}
-
-	
+	}
 }
-
-function picturesOfHands(hand) {
-	//here I want to add text so the player knows it is their hand, I need to do it outside of the for loop because that will address every card
-
+function picturesOfHands(allHands) {
 	let yourHand = document.createElement('h2');
-	yourHand.innerHTML = 'Your Hand';
+	
 	let hand1 = document.getElementById('hand');
 	hand1.className = 'text';
 	hand1.appendChild(yourHand);
+	//here I want to add text so the player knows it is their hand, I need to do it outside of the for loop because that will address every card
+	//console.log(allHands)
+
+	
+		for (const [key, value] of Object.entries(allHands)) {
+			console.log(`${key}: ${value}`);
+			yourHand.innerHTML = key
+		  }
+	
+
+	
 
 	for (var i = 0; i < hand.length; i++) {
 		let card = document.createElement('div');
@@ -161,8 +155,13 @@ function picturesOfHands(hand) {
 
 		if (hand[i].suit == 2) {
 			var ascii_char = '♦';
+		} else if (hand[i].suit == 3 ){
+			var ascii_char = "♣"
+			
+		} else if (hand[i].suit == 4){
+			var ascii_char = "♠"
 		} else {
-			var ascii_char = '&' + hand[i].suit + ';';
+			var ascii_char = "♥"
 		}
 
 		card.innerHTML = '' + hand[i].name + '' + ascii_char + '';
@@ -171,7 +170,7 @@ function picturesOfHands(hand) {
 	}
 }
 
-function drawACard() {
-	//need to choose a random card
-	//add that card to the players hand
-}
+// function drawACard() {
+// 	//need to choose a random card
+// 	//add that card to the players hand
+// }
