@@ -4,13 +4,13 @@ playerButton.addEventListener('click', function (event) {
 	numPlayers(myDeck);
 });
 
-const suits = {     
+const suits = {
 	//I gave each suit a value to assist me in sorting the cards later
 	HEARTS: 1,
-	DIAMONDS : 2,
+	DIAMONDS: 2,
 	CLUBS: 3,
-	SPADES: 4
-}
+	SPADES: 4,
+};
 
 function numPlayers(myDeck) {
 	//while loop while arrays are < 5 because we only want 5 cards per hand
@@ -24,16 +24,15 @@ function numPlayers(myDeck) {
 
 		for (let i = 0; i < 5; i++) {
 			hand.push(myDeck.shift());
-	
+
 			sortHand(hand);
-			
 		}
 		picturesOfHands(allHands);
 		allHands['Player ' + i] = hand;
 	}
-	console.log(allHands, 'all hands');
+	//console.log(allHands, 'all hands');
 
-			//using .shift takes away the item in an array and allows me to take cards out of the remaining deck so that each card is unique and there are no repeats
+	//using .shift takes away the item in an array and allows me to take cards out of the remaining deck so that each card is unique and there are no repeats
 
 	winner(allHands);
 }
@@ -113,60 +112,57 @@ function sortHand(hand) {
 	// The Player's Hand should be able to be totaled by point value.
 	// console.log(p1Cards, "cards for sort hand")
 
-	
 	function compareCards(card1, card2) {
 		let suit1 = card1.suit;
 		let suit2 = card2.suit;
-		let val1 = card1.value
-		let val2 = card2.value
-	
-		if (suit1 === suit2){
-			return val1 - val2
+		let val1 = card1.value;
+		let val2 = card2.value;
+
+		if (suit1 === suit2) {
+			return val1 - val2;
 		} else {
-			return suit1 - suit2
+			return suit1 - suit2;
 		}
 		//here I am first sorting by suit, if the suit is the same we want to sort by value
-	hand.sort(compareCards);
-
+		hand.sort(compareCards);
 	}
 }
 function picturesOfHands(allHands) {
 	let yourHand = document.createElement('h2');
-	
 	let hand1 = document.getElementById('hand');
 	hand1.className = 'text';
 	hand1.appendChild(yourHand);
 	//here I want to add text so the player knows it is their hand, I need to do it outside of the for loop because that will address every card
 	//console.log(allHands)
-
-	
-		for (const [key, value] of Object.entries(allHands)) {
-			console.log(`${key}: ${value}`);
-			yourHand.innerHTML = key
-		  }
-	
-
-	
-
-	for (var i = 0; i < hand.length; i++) {
+	for (const [key, values] of Object.entries(allHands)) {
+		//console.log(`${key}: ${value}`);
+		yourHand.innerHTML = key;
 		let card = document.createElement('div');
+		//here we are iterating over one hand
+		//console.log(key)
 
-		card.className = 'card';
+		for (var i = 0; i < values.length; i++) {
+			console.log(typeof values[i]);
+			for (const [key2, value2] of Object.entries(values[i])) {
+				console.log(`${key2}`);
+				card.className = 'card';
+				if (key2.suit == 2) {
+					var ascii_char = '♦';
+				} else if (key2.suit == 3) {
+					var ascii_char = '♣';
+				} else if (key2.suit == 4) {
+					var ascii_char = '♠';
+				} else {
+					var ascii_char = '♥';
+				}
+				for (let i = 0; i < key2.length; i++) {
+					console.log(key2[i].name);
+					card.innerHTML = '' + key2[i].name + '' + ascii_char + '';
+				}
 
-		if (hand[i].suit == 2) {
-			var ascii_char = '♦';
-		} else if (hand[i].suit == 3 ){
-			var ascii_char = "♣"
-			
-		} else if (hand[i].suit == 4){
-			var ascii_char = "♠"
-		} else {
-			var ascii_char = "♥"
+				hand1.appendChild(card);
+			}
 		}
-
-		card.innerHTML = '' + hand[i].name + '' + ascii_char + '';
-
-		hand1.appendChild(card);
 	}
 }
 
